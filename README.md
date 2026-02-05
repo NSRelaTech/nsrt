@@ -10,7 +10,9 @@ Inspired by the [Relational Tech Project](https://www.relationaltechproject.org/
 
 **[Dear Neighbors](https://github.com/Citizen-Infra/dear-neighbors)** is the first NSRT tool available for use — a Chrome extension that replaces your new tab page with a neighborhood dashboard. Community-curated local news links and participation opportunities, scoped to your city and neighborhood.
 
-**[Download latest release](https://github.com/Citizen-Infra/dear-neighbors/releases/latest)** (.zip for all platforms)
+<a href="https://chromewebstore.google.com/detail/dear-neighbors/mofcajnlfddkgiibgodmdhghfiakgdab">
+  <img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" alt="Available in the Chrome Web Store" height="58">
+</a>
 
 Features:
 - Pick your country, city, and neighborhood (111 countries, 340+ cities)
