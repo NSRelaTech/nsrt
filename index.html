@@ -355,7 +355,23 @@
             font-size: 1.15rem;
             color: var(--text-light);
             max-width: 700px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+        }
+
+        .ideas-category {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--steel);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--grid);
+        }
+
+        .ideas-category:first-of-type {
+            margin-top: 0;
         }
 
         .ideas-grid {
@@ -638,17 +654,17 @@
             </div>
 
             <div class="tool-card">
-                <span class="tool-status">CHROME EXTENSION</span>
-                <h3>My Community</h3>
-                <div class="tool-tagline" data-lang="en">// community + bluesky feed</div>
-                <div class="tool-tagline" data-lang="sr">// zajednica + bluesky</div>
-                <p data-lang="en">Your communities in one place. Curated digests from groups you follow, Bluesky network posts, and upcoming sessions — all in your new tab.</p>
-                <p data-lang="sr">Vaše zajednice na jednom mestu. Pregled linkova iz grupa koje pratite, Bluesky postovi i predstojeći događaji — sve u novom tabu.</p>
-                <a href="https://github.com/Citizen-Infra/my-community/releases/latest" class="tool-link" target="_blank">
-                    <span data-lang="en">Download</span>
-                    <span data-lang="sr">Preuzmi</span>
+                <span class="tool-status" style="background: var(--amber); color: var(--navy);">WORK IN PROGRESS</span>
+                <h3>Community Admin</h3>
+                <div class="tool-tagline" data-lang="en">// organizer dashboard</div>
+                <div class="tool-tagline" data-lang="sr">// dashboard za organizatore</div>
+                <p data-lang="en">A shared admin platform for community organizers. Manage participation opportunities, curate local news, coordinate across neighborhoods.</p>
+                <p data-lang="sr">Zajednička admin platforma za organizatore zajednice. Upravljanje prilikama za učešće, kuriranje lokalnih vesti, koordinacija između komšiluka.</p>
+                <a href="https://github.com/Citizen-Infra" class="tool-link" target="_blank">
+                    <span data-lang="en">Follow progress</span>
+                    <span data-lang="sr">Prati razvoj</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
                     </svg>
                 </a>
             </div>
@@ -664,11 +680,14 @@
         </div>
 
         <p class="ideas-intro" data-lang="en">
-            These are tools we're thinking about building — or that we'd love to see someone build. Inspired by the <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix Library</a>, adapted for Novi Sad.
+            These are tools we're thinking about building — or that we'd love to see someone build. Inspired by the <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix Library</a>, adapted for Novi Sad. <a href="#suggest" style="color: var(--amber);">Suggest your own idea →</a>
         </p>
         <p class="ideas-intro" data-lang="sr">
-            Ovo su alati o kojima razmišljamo — ili koje bismo voleli da neko napravi. Inspirisani <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix bibliotekom</a>, prilagođeni za Novi Sad.
+            Ovo su alati o kojima razmišljamo — ili koje bismo voleli da neko napravi. Inspirisani <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix bibliotekom</a>, prilagođeni za Novi Sad. <a href="#suggest" style="color: var(--amber);">Predloži svoju ideju →</a>
         </p>
+
+        <h3 class="ideas-category" data-lang="en">Neighbor Stories & Connection</h3>
+        <h3 class="ideas-category" data-lang="sr">Priče i povezivanje komšija</h3>
 
         <div class="ideas-grid">
             <div class="idea-card">
@@ -691,7 +710,12 @@
                 <p data-lang="en">Organize casual neighborhood gatherings. Courtyard coffees, block parties, shared meals. Open invitations, low barrier.</p>
                 <p data-lang="sr">Organizujte neformalna druženja. Kafe u dvorištu, blok žurke, zajednički obroci. Otvoreni pozivi, bez komplikacija.</p>
             </div>
+        </div>
 
+        <h3 class="ideas-category" data-lang="en">Sharing & Mutual Aid</h3>
+        <h3 class="ideas-category" data-lang="sr">Deljenje i uzajamna pomoć</h3>
+
+        <div class="ideas-grid">
             <div class="idea-card">
                 <h4 data-lang="en">Borrow Network</h4>
                 <h4 data-lang="sr">Pozajmi</h4>
@@ -707,12 +731,74 @@
             </div>
 
             <div class="idea-card">
+                <h4 data-lang="en">Solidarity Network</h4>
+                <h4 data-lang="sr">Mreža Solidarnosti</h4>
+                <p data-lang="en">Coordinate mutual aid during heat waves, cold snaps, or Danube floods. Who needs help? Who can provide it? SMS-based, no app required.</p>
+                <p data-lang="sr">Koordinacija uzajamne pomoći tokom toplotnih talasa, hladnoća ili poplava Dunava. Ko treba pomoć? Ko može da pomogne? Preko SMS-a, bez aplikacije.</p>
+            </div>
+        </div>
+
+        <h3 class="ideas-category" data-lang="en">Local Culture & Economy</h3>
+        <h3 class="ideas-category" data-lang="sr">Lokalna kultura i ekonomija</h3>
+
+        <div class="ideas-grid">
+            <div class="idea-card">
                 <h4 data-lang="en">Culture Radar</h4>
                 <h4 data-lang="sr">Kulturni Radar</h4>
                 <p data-lang="en">Community calendar of small cultural events. Gallery openings, readings, jam sessions. Neighbors post their own, not scraped from Instagram.</p>
                 <p data-lang="sr">Kalendar malih kulturnih događaja. Otvaranja galerija, čitanja, jam sessions. Komšije objavljuju svoje, ne skrejpovano s Instagrama.</p>
             </div>
+
+            <div class="idea-card">
+                <h4 data-lang="en">Local First</h4>
+                <h4 data-lang="sr">Lokalno Prvo</h4>
+                <p data-lang="en">Community-curated directory of local businesses, craftspeople, and services. Neighborhood recommendations with personal context, not anonymous reviews.</p>
+                <p data-lang="sr">Direktorijum lokalnih biznisa, zanatlija i usluga koji kurira zajednica. Preporuke komšija sa ličnim kontekstom, ne anonimne recenzije.</p>
+            </div>
         </div>
+
+        <h3 class="ideas-category" data-lang="en">Infrastructure</h3>
+        <h3 class="ideas-category" data-lang="sr">Infrastruktura</h3>
+
+        <div class="ideas-grid">
+            <div class="idea-card">
+                <h4 data-lang="en">Neighborhood API</h4>
+                <h4 data-lang="sr">Komšiluk API</h4>
+                <p data-lang="en">A shared, open feed format for local events, assets, needs, and notices. Different tools publish and consume from it, keeping the ecosystem interoperable.</p>
+                <p data-lang="sr">Zajednički, otvoreni format za lokalne događaje, resurse, potrebe i obaveštenja. Različiti alati objavljuju i čitaju iz njega, održavajući ekosistem interoperabilnim.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4 data-lang="en">Community Apps Dashboard</h4>
+                <h4 data-lang="sr">Dashboard Aplikacija Zajednice</h4>
+                <p data-lang="en">A directory of all NSRT tools and community-built digital resources. The front door for residents who want to find or build tools.</p>
+                <p data-lang="sr">Direktorijum svih NSRT alata i digitalnih resursa koje je napravila zajednica. Ulazna tačka za stanovnike koji žele da pronađu ili naprave alate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suggest an Idea -->
+    <section class="section" id="suggest">
+        <div class="section-header">
+            <span class="section-num">03</span>
+            <h2 class="section-title" data-lang="en">Suggest an Idea</h2>
+            <h2 class="section-title" data-lang="sr">Predloži ideju</h2>
+        </div>
+
+        <p class="ideas-intro" data-lang="en">
+            Have an idea for a tool that would help Novi Sad neighbors? We'd love to hear it. Submit your idea and we'll add it to our list for the community to discuss and potentially build.
+        </p>
+        <p class="ideas-intro" data-lang="sr">
+            Imate ideju za alat koji bi pomogao komšijama u Novom Sadu? Voleli bismo da je čujemo. Pošaljite svoju ideju i dodaćemo je na našu listu za diskusiju u zajednici i potencijalno pravljenje.
+        </p>
+
+        <a href="https://citizen-collective.notion.site/2fe6b503b70d80399027e5dc4f68869e" class="hero-cta" target="_blank" style="margin-top: 20px;">
+            <span data-lang="en">Submit your idea</span>
+            <span data-lang="sr">Pošalji ideju</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+        </a>
     </section>
 
     <!-- Manifesto -->
