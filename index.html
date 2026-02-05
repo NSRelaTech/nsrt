@@ -7,21 +7,24 @@
     <meta name="description" content="Community tools crafted by, with, and for Novi Sad residents. Alati koje pravimo zajedno, za naše komšije.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #FDF8F3;
-            --terracotta: #C45D3A;
-            --terracotta-dark: #A84E30;
-            --olive: #5B7C5A;
-            --olive-light: #7A9B79;
-            --brown: #3D2E2A;
-            --brown-light: #5C4A44;
-            --sage: #D4DFD3;
-            --sage-dark: #B8C9B6;
+            --navy: #1a2332;
+            --navy-light: #2a3a52;
+            --amber: #E8A838;
+            --amber-dark: #C48A20;
+            --cream: #F5F2EB;
+            --cream-dark: #E8E4DB;
+            --steel: #4A6FA5;
+            --steel-light: #6B8FC5;
+            --grid: #D4D0C8;
+            --text: #2C3E50;
+            --text-light: #5D6D7E;
 
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'Nunito', -apple-system, sans-serif;
+            --font-display: 'Libre Baskerville', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Source Serif 4', Georgia, serif;
         }
 
         * {
@@ -37,20 +40,22 @@
         body {
             font-family: var(--font-body);
             background: var(--cream);
-            color: var(--brown);
-            line-height: 1.6;
-            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        /* Paper texture overlay */
+        /* Blueprint grid background */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
+            background-image:
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
             pointer-events: none;
-            z-index: 1000;
+            z-index: -1;
         }
 
         /* Language toggle */
@@ -60,33 +65,32 @@
             right: 20px;
             z-index: 100;
             display: flex;
-            background: white;
-            border-radius: 30px;
-            padding: 4px;
-            box-shadow: 0 2px 10px rgba(61, 46, 42, 0.1);
-            border: 1px solid var(--sage);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            background: var(--navy);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(26, 35, 50, 0.2);
         }
 
         .lang-btn {
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border: none;
             background: transparent;
-            color: var(--brown-light);
+            color: rgba(255,255,255,0.6);
             cursor: pointer;
-            border-radius: 26px;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-size: inherit;
         }
 
         .lang-btn.active {
-            background: var(--terracotta);
-            color: white;
+            background: var(--amber);
+            color: var(--navy);
         }
 
         .lang-btn:hover:not(.active) {
-            color: var(--terracotta);
+            color: white;
         }
 
         /* Content visibility */
@@ -94,350 +98,455 @@
         body.sr [data-lang="en"] { display: none; }
         body.sr [data-lang="sr"] { display: block; }
 
-        /* Hero section */
+        /* Header bar */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 50;
+            background: linear-gradient(to bottom, var(--cream) 60%, transparent);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--amber);
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
+            padding: 120px 40px 80px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        /* Decorative border - hand-drawn style */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            border: 2px solid var(--sage-dark);
-            border-radius: 20px;
-            pointer-events: none;
-        }
-
-        /* Corner decorations */
-        .corner-decor {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            opacity: 0.6;
-        }
-
-        .corner-decor svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .corner-decor.top-left { top: 30px; left: 30px; }
-        .corner-decor.top-right { top: 30px; right: 30px; transform: rotate(90deg); }
-        .corner-decor.bottom-left { bottom: 30px; left: 30px; transform: rotate(-90deg); }
-        .corner-decor.bottom-right { bottom: 30px; right: 30px; transform: rotate(180deg); }
-
-        .hero-content {
-            max-width: 700px;
-            animation: fadeUp 0.8s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
+        .coords {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--steel);
             margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--terracotta);
-            letter-spacing: -0.5px;
+        .coords::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--amber);
+            border-radius: 50%;
         }
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            color: var(--brown);
+            line-height: 1.25;
+            color: var(--navy);
+            margin-bottom: 30px;
         }
 
         .hero h1 em {
             font-style: italic;
-            color: var(--terracotta);
+            color: var(--steel);
         }
 
-        .hero p {
+        .hero-text {
             font-size: 1.25rem;
-            color: var(--brown-light);
-            max-width: 550px;
-            margin: 0 auto 40px;
+            color: var(--text-light);
+            max-width: 650px;
+            margin-bottom: 40px;
         }
 
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
+        .hero-cta {
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--olive);
-            font-size: 14px;
-            animation: bounce 2s infinite;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--navy);
+            text-decoration: none;
+            padding: 14px 24px;
+            background: var(--amber);
+            border-radius: 4px;
+            transition: all 0.2s;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+        .hero-cta:hover {
+            background: var(--amber-dark);
+            transform: translateY(-2px);
         }
 
-        .scroll-hint svg {
-            width: 24px;
-            height: 24px;
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
         }
 
-        /* Tools section */
-        .tools {
-            padding: 80px 20px 100px;
+        /* Section styling */
+        .section {
+            padding: 100px 40px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 60px;
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--navy);
         }
 
-        .section-header h2 {
+        .section-num {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--amber);
+            background: var(--navy);
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .section-title {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 400;
-            color: var(--brown);
-            margin-bottom: 12px;
+            color: var(--navy);
         }
 
-        .section-header p {
-            color: var(--brown-light);
-            font-size: 1.1rem;
-        }
-
+        /* Available tools */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .tool-card {
             background: white;
-            border-radius: 16px;
-            padding: 32px;
-            border: 2px solid var(--sage);
+            border: 2px solid var(--navy);
+            padding: 30px;
             position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
+            transition: all 0.3s;
         }
 
         .tool-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--olive);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 6px;
+            background: var(--amber);
         }
 
         .tool-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(61, 46, 42, 0.12);
-            border-color: var(--olive);
+            box-shadow: 8px 8px 0 var(--navy);
         }
 
-        .tool-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .tool-card:nth-child(2)::before {
-            background: var(--terracotta);
-        }
-
-        .tool-card:nth-child(2):hover {
-            border-color: var(--terracotta);
-        }
-
-        .tool-icon {
-            width: 56px;
-            height: 56px;
-            margin-bottom: 20px;
+        .tool-status {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: white;
+            background: var(--steel);
+            padding: 4px 10px;
+            border-radius: 2px;
+            display: inline-block;
+            margin-bottom: 16px;
         }
 
         .tool-card h3 {
             font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--brown);
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 8px;
         }
 
-        .tool-card .tagline {
-            font-size: 0.95rem;
-            color: var(--olive);
-            font-weight: 500;
+        .tool-tagline {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--steel);
             margin-bottom: 16px;
         }
 
         .tool-card p {
-            color: var(--brown-light);
+            color: var(--text-light);
             margin-bottom: 24px;
-            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .tool-link {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--navy);
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: var(--font-body);
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--terracotta);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid var(--terracotta);
-            border-radius: 30px;
-            transition: all 0.3s ease;
+            padding: 10px 16px;
+            border: 2px solid var(--navy);
+            transition: all 0.2s;
         }
 
         .tool-link:hover {
-            background: var(--terracotta);
-            color: white;
+            background: var(--navy);
+            color: var(--amber);
         }
 
         .tool-link svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease;
+            width: 14px;
+            height: 14px;
         }
 
-        .tool-link:hover svg {
-            transform: translateX(4px);
+        /* Ideas section */
+        .ideas-intro {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .idea-card {
+            padding: 24px;
+            background: var(--cream-dark);
+            border-left: 4px solid var(--steel);
+            transition: all 0.2s;
+        }
+
+        .idea-card:hover {
+            border-left-color: var(--amber);
+            background: white;
+        }
+
+        .idea-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .idea-card .idea-name-sr {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--steel);
+            margin-bottom: 12px;
+        }
+
+        .idea-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Manifesto section */
+        .manifesto {
+            background: var(--navy);
+            color: white;
+            padding: 100px 40px;
+            margin-top: 60px;
+        }
+
+        .manifesto-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manifesto h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: var(--amber);
+        }
+
+        .manifesto-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 30px;
+        }
+
+        .principles {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .principles li {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+        }
+
+        .principles li::before {
+            content: '→';
+            color: var(--amber);
+            font-family: var(--font-mono);
+        }
+
+        .principles strong {
+            color: white;
         }
 
         /* Footer */
         footer {
-            background: var(--sage);
-            padding: 50px 20px;
+            background: var(--navy-light);
+            padding: 80px 40px;
+        }
+
+        .footer-inner {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        footer h3 {
+        .footer-quote {
             font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--brown);
-            margin-bottom: 16px;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        footer p {
-            color: var(--brown-light);
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .footer-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--olive);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--terracotta);
-        }
-
-        .footer-link svg {
-            width: 20px;
-            height: 20px;
+        .footer-author {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--amber);
+            margin-bottom: 50px;
         }
 
         .footer-divider {
             width: 60px;
             height: 2px;
-            background: var(--olive);
-            margin: 30px auto;
-            opacity: 0.5;
+            background: var(--steel);
+            margin: 0 auto 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--amber);
+        }
+
+        .footer-link svg {
+            width: 18px;
+            height: 18px;
         }
 
         .footer-tagline {
-            font-family: var(--font-display);
-            font-style: italic;
-            color: var(--brown-light);
-            font-size: 0.95rem;
+            margin-top: 50px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Bridge decoration */
+        .bridge-decor {
+            width: 100%;
+            height: 60px;
+            margin: 60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .bridge-decor::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 2px;
+            background: var(--grid);
+        }
+
+        .bridge-decor svg {
+            position: relative;
+            background: var(--cream);
+            padding: 0 20px;
         }
 
         /* Responsive */
-        @media (max-width: 600px) {
-            .hero::before {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
             }
 
-            .corner-decor {
-                width: 40px;
-                height: 40px;
+            .hero, .section {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
-            .corner-decor.top-left { top: 15px; left: 15px; }
-            .corner-decor.top-right { top: 15px; right: 15px; }
-            .corner-decor.bottom-left { bottom: 15px; left: 15px; }
-            .corner-decor.bottom-right { bottom: 15px; right: 15px; }
+            .section-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .manifesto, footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
 
             .lang-toggle {
-                top: 10px;
-                right: 10px;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-
-            .tools {
-                padding: 60px 16px 80px;
+                top: 15px;
+                right: 15px;
             }
         }
     </style>
@@ -449,152 +558,203 @@
         <button class="lang-btn" onclick="setLang('sr')">SR</button>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">
+            <div class="logo-mark">NS</div>
+            <span class="logo-text">NOVI SAD RELATIONAL TECH</span>
+        </a>
+    </header>
+
+    <!-- Hero -->
     <section class="hero">
-        <!-- Corner decorations - hand-drawn leaf/branch motif -->
-        <div class="corner-decor top-left">
-            <svg viewBox="0 0 60 60" fill="none" stroke="#5B7C5A" stroke-width="1.5" stroke-linecap="round">
-                <path d="M5 55 Q5 5 55 5" />
-                <path d="M15 45 Q20 30 35 25" />
-                <path d="M25 40 Q28 32 38 28" />
-                <circle cx="12" cy="48" r="3" fill="#5B7C5A" opacity="0.3" />
-                <circle cx="20" cy="38" r="2" fill="#5B7C5A" opacity="0.3" />
-            </svg>
-        </div>
-        <div class="corner-decor top-right">
-            <svg viewBox="0 0 60 60" fill="none" stroke="#5B7C5A" stroke-width="1.5" stroke-linecap="round">
-                <path d="M5 55 Q5 5 55 5" />
-                <path d="M15 45 Q20 30 35 25" />
-                <path d="M25 40 Q28 32 38 28" />
-                <circle cx="12" cy="48" r="3" fill="#5B7C5A" opacity="0.3" />
-                <circle cx="20" cy="38" r="2" fill="#5B7C5A" opacity="0.3" />
-            </svg>
-        </div>
-        <div class="corner-decor bottom-left">
-            <svg viewBox="0 0 60 60" fill="none" stroke="#5B7C5A" stroke-width="1.5" stroke-linecap="round">
-                <path d="M5 55 Q5 5 55 5" />
-                <path d="M15 45 Q20 30 35 25" />
-                <path d="M25 40 Q28 32 38 28" />
-                <circle cx="12" cy="48" r="3" fill="#5B7C5A" opacity="0.3" />
-                <circle cx="20" cy="38" r="2" fill="#5B7C5A" opacity="0.3" />
-            </svg>
-        </div>
-        <div class="corner-decor bottom-right">
-            <svg viewBox="0 0 60 60" fill="none" stroke="#5B7C5A" stroke-width="1.5" stroke-linecap="round">
-                <path d="M5 55 Q5 5 55 5" />
-                <path d="M15 45 Q20 30 35 25" />
-                <path d="M25 40 Q28 32 38 28" />
-                <circle cx="12" cy="48" r="3" fill="#5B7C5A" opacity="0.3" />
-                <circle cx="20" cy="38" r="2" fill="#5B7C5A" opacity="0.3" />
-            </svg>
-        </div>
+        <div class="coords">45.2671° N, 19.8335° E — Novi Sad, Serbia</div>
 
-        <div class="hero-content">
-            <div class="logo">
-                <!-- Hand-drawn houses icon -->
-                <svg class="logo-icon" viewBox="0 0 50 50" fill="none">
-                    <path d="M8 28 L8 42 L22 42 L22 28 L15 20 Z" stroke="#C45D3A" stroke-width="2" fill="#FDF8F3"/>
-                    <path d="M28 24 L28 42 L42 42 L42 24 L35 16 Z" stroke="#5B7C5A" stroke-width="2" fill="#FDF8F3"/>
-                    <path d="M12 32 L12 36 L18 36 L18 32 Z" stroke="#C45D3A" stroke-width="1.5" fill="none"/>
-                    <path d="M32 28 L32 34 L38 34 L38 28 Z" stroke="#5B7C5A" stroke-width="1.5" fill="none"/>
-                    <circle cx="15" cy="38" r="1.5" fill="#C45D3A"/>
-                    <circle cx="35" cy="38" r="1.5" fill="#5B7C5A"/>
-                </svg>
-                <span class="logo-text">NSRT</span>
-            </div>
+        <h1 data-lang="en">We can build <em>what we need</em></h1>
+        <h1 data-lang="sr">Možemo da napravimo <em>ono što nam treba</em></h1>
 
-            <h1 data-lang="en">Tools made <em>by neighbors,</em><br>for neighbors</h1>
-            <h1 data-lang="sr">Alati koje pravimo <em>zajedno,</em><br>za naše komšije</h1>
+        <p class="hero-text" data-lang="en">
+            No one is coming to save our neighborhoods. The good news: we can build the tools ourselves. NSRT is a community of Novi Sad residents crafting relational technology — small tools that help us connect, care for, and trust each other.
+        </p>
+        <p class="hero-text" data-lang="sr">
+            Niko neće doći da spasi naša komšiluka. Dobra vest: možemo sami da napravimo alate. NSRT je zajednica stanovnika Novog Sada koji prave relacione tehnologije — male alate koji nam pomažu da se povežemo i brinemo jedni o drugima.
+        </p>
 
-            <p data-lang="en">Novi Sad Relational Tech — community tools crafted with and for residents of Novi Sad. Small tools that help us connect, care for, and trust each other.</p>
-            <p data-lang="sr">Novi Sad Relational Tech — digitalni alati koje pravimo zajedno sa stanovnicima Novog Sada. Mali alati koji nam pomažu da se povežemo i brinemo jedni o drugima.</p>
-        </div>
-
-        <div class="scroll-hint">
-            <span data-lang="en">Our tools</span>
-            <span data-lang="sr">Naši alati</span>
+        <a href="#tools" class="hero-cta">
+            <span data-lang="en">See our tools</span>
+            <span data-lang="sr">Pogledaj alate</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M5 12l7 7 7-7"/>
             </svg>
-        </div>
+        </a>
     </section>
 
-    <!-- Tools Section -->
-    <section class="tools" id="tools">
+    <!-- Bridge decoration -->
+    <div class="bridge-decor">
+        <svg width="120" height="40" viewBox="0 0 120 40" fill="none" stroke="#4A6FA5" stroke-width="2">
+            <path d="M0 30 Q30 10 60 30 Q90 10 120 30"/>
+            <line x1="20" y1="30" x2="20" y2="38"/>
+            <line x1="60" y1="30" x2="60" y2="38"/>
+            <line x1="100" y1="30" x2="100" y2="38"/>
+        </svg>
+    </div>
+
+    <!-- Available Tools -->
+    <section class="section" id="tools">
         <div class="section-header">
-            <h2 data-lang="en">Available Now</h2>
-            <h2 data-lang="sr">Dostupno sada</h2>
-            <p data-lang="en">Free Chrome extensions for your neighborhood</p>
-            <p data-lang="sr">Besplatni Chrome dodaci za vaše komšiluk</p>
+            <span class="section-num">01</span>
+            <h2 class="section-title" data-lang="en">Available Now</h2>
+            <h2 class="section-title" data-lang="sr">Dostupno sada</h2>
         </div>
 
         <div class="tools-grid">
-            <!-- Dear Neighbors -->
             <div class="tool-card">
-                <svg class="tool-icon" viewBox="0 0 56 56" fill="none">
-                    <rect x="4" y="8" width="48" height="40" rx="4" stroke="#5B7C5A" stroke-width="2" fill="#D4DFD3" opacity="0.3"/>
-                    <path d="M12 20h32M12 28h24M12 36h16" stroke="#5B7C5A" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="44" cy="36" r="6" fill="#5B7C5A"/>
-                    <path d="M42 36l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <span class="tool-status">CHROME EXTENSION</span>
                 <h3>Dear Neighbors</h3>
-                <div class="tagline" data-lang="en">Neighborhood Dashboard</div>
-                <div class="tagline" data-lang="sr">Komšijski dashboard</div>
-                <p data-lang="en">Turn your new tab into a local news feed. Community links, participation opportunities, and events — all scoped to your neighborhood.</p>
-                <p data-lang="sr">Pretvorite novi tab u lokalne vesti. Linkovi iz zajednice, prilike za učešće i događaji — sve za vaš komšiluk.</p>
+                <div class="tool-tagline" data-lang="en">// neighborhood dashboard</div>
+                <div class="tool-tagline" data-lang="sr">// komšijski dashboard</div>
+                <p data-lang="en">Turn your new tab into a local news feed. Community-curated links, participation opportunities, and events — scoped to your neighborhood. 111 countries, 340+ cities.</p>
+                <p data-lang="sr">Pretvorite novi tab u lokalne vesti. Linkovi iz zajednice, prilike za učešće i događaji — filtrirano za vaš komšiluk. 111 zemalja, 340+ gradova.</p>
                 <a href="https://github.com/Citizen-Infra/dear-neighbors/releases/latest" class="tool-link" target="_blank">
                     <span data-lang="en">Download</span>
                     <span data-lang="sr">Preuzmi</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                     </svg>
                 </a>
             </div>
 
-            <!-- My Community -->
             <div class="tool-card">
-                <svg class="tool-icon" viewBox="0 0 56 56" fill="none">
-                    <circle cx="28" cy="20" r="8" stroke="#C45D3A" stroke-width="2" fill="#C45D3A" opacity="0.2"/>
-                    <circle cx="14" cy="36" r="6" stroke="#C45D3A" stroke-width="2" fill="#C45D3A" opacity="0.2"/>
-                    <circle cx="42" cy="36" r="6" stroke="#C45D3A" stroke-width="2" fill="#C45D3A" opacity="0.2"/>
-                    <path d="M22 24l-6 8M34 24l6 8M20 36h16" stroke="#C45D3A" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-                </svg>
+                <span class="tool-status">CHROME EXTENSION</span>
                 <h3>My Community</h3>
-                <div class="tagline" data-lang="en">Community + Bluesky Feed</div>
-                <div class="tagline" data-lang="sr">Zajednica + Bluesky</div>
-                <p data-lang="en">Your communities in one place. Curated digests, Bluesky network posts, and upcoming sessions — all in your new tab.</p>
-                <p data-lang="sr">Vaše zajednice na jednom mestu. Pregled linkova, Bluesky postovi i predstojeći događaji — sve u novom tabu.</p>
+                <div class="tool-tagline" data-lang="en">// community + bluesky feed</div>
+                <div class="tool-tagline" data-lang="sr">// zajednica + bluesky</div>
+                <p data-lang="en">Your communities in one place. Curated digests from groups you follow, Bluesky network posts, and upcoming sessions — all in your new tab.</p>
+                <p data-lang="sr">Vaše zajednice na jednom mestu. Pregled linkova iz grupa koje pratite, Bluesky postovi i predstojeći događaji — sve u novom tabu.</p>
                 <a href="https://github.com/Citizen-Infra/my-community/releases/latest" class="tool-link" target="_blank">
                     <span data-lang="en">Download</span>
                     <span data-lang="sr">Preuzmi</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                     </svg>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Tool Ideas -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-num">02</span>
+            <h2 class="section-title" data-lang="en">What We're Exploring</h2>
+            <h2 class="section-title" data-lang="sr">Šta istražujemo</h2>
+        </div>
+
+        <p class="ideas-intro" data-lang="en">
+            These are tools we're thinking about building — or that we'd love to see someone build. Inspired by the <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix Library</a>, adapted for Novi Sad.
+        </p>
+        <p class="ideas-intro" data-lang="sr">
+            Ovo su alati o kojima razmišljamo — ili koje bismo voleli da neko napravi. Inspirisani <a href="https://www.relationaltechproject.org/remix" target="_blank" style="color: var(--steel);">RTP Remix bibliotekom</a>, prilagođeni za Novi Sad.
+        </p>
+
+        <div class="ideas-grid">
+            <div class="idea-card">
+                <h4>Neighbor Stories</h4>
+                <div class="idea-name-sr">Priče Komšija</div>
+                <p data-lang="en">A platform for collecting personal stories from residents. Who lives on your street? What's their story? Connection through narrative.</p>
+                <p data-lang="sr">Platforma za prikupljanje ličnih priča stanara. Ko živi u vašoj ulici? Koja je njihova priča? Povezivanje kroz narativ.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4>Neighborhood Hub</h4>
+                <div class="idea-name-sr">Komšiluk Hub</div>
+                <p data-lang="en">A hyperlocal hub for your block or building. Asks, offers, notices, care coordination — scoped to your immediate neighbors.</p>
+                <p data-lang="sr">Hiperloklani hub za vaš blok ili zgradu. Molbe, ponude, obaveštenja, koordinacija brige — samo za najbliže komšije.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4>Courtyard Sessions</h4>
+                <div class="idea-name-sr">Dvorište Sessions</div>
+                <p data-lang="en">Organize casual neighborhood gatherings. Courtyard coffees, block parties, shared meals. Open invitations, low barrier.</p>
+                <p data-lang="sr">Organizujte neformalna druženja. Kafe u dvorištu, blok žurke, zajednički obroci. Otvoreni pozivi, bez komplikacija.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4>Borrow Network</h4>
+                <div class="idea-name-sr">Pozajmi</div>
+                <p data-lang="en">A catalog of things neighbors will lend. Tools, books, camping gear, kitchen equipment. Track what's available and who has it.</p>
+                <p data-lang="sr">Katalog stvari koje komšije pozajmljuju. Alati, knjige, oprema za kampovanje, kuhinjska oprema. Pratite šta je dostupno.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4>Skill Exchange</h4>
+                <div class="idea-name-sr">Razmena</div>
+                <p data-lang="en">Time and skill exchange. What can you teach? What do you want to learn? Guitar for tax help, Serbian for English. No currency.</p>
+                <p data-lang="sr">Razmena vremena i veština. Šta možete da naučite druge? Šta želite da naučite? Gitara za pomoć s porezom. Bez novca.</p>
+            </div>
+
+            <div class="idea-card">
+                <h4>Culture Radar</h4>
+                <div class="idea-name-sr">Kulturni Radar</div>
+                <p data-lang="en">Community calendar of small cultural events. Gallery openings, readings, jam sessions. Neighbors post their own, not scraped from Instagram.</p>
+                <p data-lang="sr">Kalendar malih kulturnih događaja. Otvaranja galerija, čitanja, jam sessions. Komšije objavljuju svoje, ne skrejpovano s Instagrama.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="manifesto">
+        <div class="manifesto-inner">
+            <h2 data-lang="en">Why we build this way</h2>
+            <h2 data-lang="sr">Zašto gradimo ovako</h2>
+
+            <p class="manifesto-text" data-lang="en">
+                We've been told a perfect app would fix our neighborhoods. That hasn't worked. The tools we need won't come from Silicon Valley or Belgrade startups — they'll come from us, the people who live here and understand what we actually need.
+            </p>
+            <p class="manifesto-text" data-lang="sr">
+                Govorili su nam da će savršena aplikacija popraviti naša komšiluka. Nije uspelo. Alati koji su nam potrebni neće doći iz Silicijumske doline ili beogradskih startapa — doći će od nas, ljudi koji ovde žive i razumeju šta nam zaista treba.
+            </p>
+
+            <ul class="principles">
+                <li data-lang="en"><strong>Neighbor-to-neighbor.</strong> Strengthening bonds between residents, not reporting tools for authorities.</li>
+                <li data-lang="sr"><strong>Od komšije do komšije.</strong> Jačanje veza između stanara, ne alati za prijave vlastima.</li>
+                <li data-lang="en"><strong>Village-scale.</strong> Tools scoped to a block, building, or mesna zajednica — not all of Novi Sad at once.</li>
+                <li data-lang="sr"><strong>Razmera sela.</strong> Alati ograničeni na blok, zgradu ili mesnu zajednicu — ne ceo Novi Sad odjednom.</li>
+                <li data-lang="en"><strong>Small tools, not platforms.</strong> Interoperable pieces that work together, not one system to rule them all.</li>
+                <li data-lang="sr"><strong>Mali alati, ne platforme.</strong> Interoperabilni delovi koji rade zajedno, ne jedan sistem koji vlada svima.</li>
+                <li data-lang="en"><strong>Remix, don't reinvent.</strong> Adapt existing patterns to our context rather than starting from zero.</li>
+                <li data-lang="sr"><strong>Remiksuj, ne izmišljaj.</strong> Prilagodi postojeće šablone našem kontekstu umesto da krećeš od nule.</li>
+            </ul>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <h3 data-lang="en">Built with neighbors, for neighbors</h3>
-            <h3 data-lang="sr">Pravimo zajedno, za komšije</h3>
-
-            <p data-lang="en">NSRT is part of Citizen Infrastructure — a community forging digital tools that teach collective action through use.</p>
-            <p data-lang="sr">NSRT je deo Citizen Infrastructure — zajednice koja pravi digitalne alate koji nas uče zajedničkom delovanju.</p>
-
-            <a href="https://github.com/Citizen-Infra" class="footer-link" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-                Citizen-Infra
-            </a>
+        <div class="footer-inner">
+            <p class="footer-quote">
+                "If you want to teach people a new way of thinking, don't bother trying to teach them. Instead, give them a tool, the use of which will lead to new ways of thinking."
+            </p>
+            <p class="footer-author">— Buckminster Fuller</p>
 
             <div class="footer-divider"></div>
 
-            <p class="footer-tagline" data-lang="en">"Tools that teach collective action through use"</p>
-            <p class="footer-tagline" data-lang="sr">„Alati koji nas uče zajedničkom delovanju"</p>
+            <div class="footer-links">
+                <a href="https://github.com/Citizen-Infra/nsrt" class="footer-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://github.com/Citizen-Infra" class="footer-link" target="_blank">
+                    Citizen-Infra
+                </a>
+                <a href="https://www.relationaltechproject.org/" class="footer-link" target="_blank">
+                    RTP
+                </a>
+            </div>
+
+            <p class="footer-tagline" data-lang="en">Tools that teach collective action through use</p>
+            <p class="footer-tagline" data-lang="sr">Alati koji nas uče zajedničkom delovanju</p>
         </div>
     </footer>
 
