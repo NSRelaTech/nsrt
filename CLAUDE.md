@@ -4,25 +4,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Novi Sad Relational Tech (NSRT) — community tools crafted by, with, and for Novi Sad residents. Inspired by the [Relational Tech Project](https://www.relationaltechproject.org/) and their [Remix Library](https://www.relationaltechproject.org/remix).
+Novi Sad Relational Tech (NSRT) — community tools crafted by, with, and for Novi Sad residents. Part of [Citizen Infrastructure Builders](https://github.com/Citizen-Infra).
 
-Part of the [Citizen Infrastructure Builders](https://github.com/Citizen-Infra) organization — a community forging "digital pitchforks" (citizen infrastructure that teaches collective action through use).
+**Live site:** [nsrt.netlify.app](https://nsrt.netlify.app)
 
-This is an early-stage project. No stack has been chosen yet. The repo currently contains project description and tool ideas.
+## Commands
+
+```bash
+# Generate OG image (requires Node.js and Puppeteer)
+npm install
+node generate-og-image.js
+```
+
+The OG image script uses Puppeteer to screenshot `og-image.html` at 1200x630 and saves to `og-image.png`.
+
+## Architecture
+
+This is a static landing page with no build step — just `index.html` served directly by Netlify.
+
+**Trilingual support (EN/SR/RU):**
+- Language toggle buttons in top-right corner
+- Content elements have `data-lang="en|sr|ru"` attributes
+- CSS shows/hides content based on `body.sr` or `body.ru` class
+- Preference saved to localStorage (`nsrt-lang`)
+- Auto-detects browser language on first visit
+
+**Key CSS patterns:**
+```css
+[data-lang="sr"], [data-lang="ru"] { display: none !important; }
+body.sr [data-lang="en"], body.sr [data-lang="ru"] { display: none !important; }
+body.sr [data-lang="sr"] { display: block !important; }
+```
+
+## Related Projects
+
+| Project | Description |
+|---------|-------------|
+| [dear-neighbors](https://github.com/Citizen-Infra/dear-neighbors) | Chrome extension — neighborhood dashboard |
+| [my-community](https://github.com/Citizen-Infra/my-community) | Chrome extension — community dashboard with Bluesky |
+| [community-admin](https://github.com/Citizen-Infra) | Admin platform for organizers (WIP) |
 
 ## Design Principles
-
-When building tools for this project, follow these principles:
 
 - **Neighbor-to-neighbor, not citizen-to-government.** Strengthen bonds between residents, not reporting tools for authorities.
 - **Village-scale, not city-scale.** Scope tools to a block, building, or mesna zajednica.
 - **Interoperable small tools over one platform.** Use shared feed formats so tools can publish and consume local data independently.
-- **Remix, don't reinvent.** Adapt existing RTP patterns to Novi Sad's context.
-- **Pedagogical by design.** Every interaction should teach users to think collectively. Tools should enable ownership and stewardship, not consumption.
-- **Sovereignty-preserving.** Communities maintain control over their tools and data. Loosely coupled modules over monolithic systems.
-
-## Repository
-
-- **GitHub:** github.com/Citizen-Infra/nsrt
-- **License:** MIT
-- **Code of Conduct:** Contributor Covenant v2.1
+- **Remix, don't reinvent.** Adapt existing [RTP patterns](https://www.relationaltechproject.org/remix) to Novi Sad's context.
+- **Pedagogical by design.** Every interaction should teach users to think collectively.
+- **Sovereignty-preserving.** Communities maintain control over their tools and data.
