@@ -68,6 +68,10 @@ Novi Sad has a rich cultural fabric and engaged residents, but like many cities,
 
 This project is open to anyone who lives in or cares about Novi Sad. Whether you're a developer, designer, organizer, or simply a curious neighbor — there's a place for you here.
 
+## Code of Conduct
+
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## License
 
 MIT

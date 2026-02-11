@@ -7,12 +7,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Novi Sad Relational Tech (NSRT) — community tools crafted by, with, and for Novi Sad residents. Part of [Citizen Infrastructure Builders](https://github.com/Citizen-Infra).
 
 **Live site:** [nsrt.netlify.app](https://nsrt.netlify.app)
+**Telegram:** [t.me/NSRelaTech](https://t.me/NSRelaTech)
+**Luma calendar:** [lu.ma/nsrt](https://lu.ma/nsrt)
 
 ## Commands
 
 ```bash
-# Deploy to Netlify (after pushing to GitHub)
-npx netlify deploy --prod
+# Deploy to Netlify (deploys current directory as-is, no build step)
+npx netlify deploy --prod --dir=.
 
 # Generate OG image (requires Node.js and Puppeteer)
 npm install
@@ -23,14 +25,16 @@ The OG image script uses Puppeteer to screenshot `og-image.html` at 1200x630 and
 
 ## Architecture
 
-This is a static landing page with no build step — just `index.html` served directly by Netlify.
+Static landing page with no build step — just `index.html` served directly by Netlify.
 
 **Trilingual support (EN/SR/RU):**
 - Language toggle buttons in top-right corner
 - Content elements have `data-lang="en|sr|ru"` attributes
-- CSS shows/hides content based on `body.sr` or `body.ru` class
+- CSS shows/hides content based on `body.sr` or `body.ru` class (EN is the default — no class on body)
 - Preference saved to localStorage (`nsrt-lang`)
 - Auto-detects browser language on first visit
+- When adding new content, always provide all three language variants
+- For dynamically inserted HTML, call `setLang(currentLang)` after DOM update to re-apply visibility
 
 **Key CSS patterns:**
 ```css
@@ -39,6 +43,16 @@ body.sr [data-lang="en"], body.sr [data-lang="ru"] { display: none !important; }
 body.sr [data-lang="sr"] { display: block !important; }
 ```
 
+**Dynamic events (Section 01):**
+- Fetches upcoming events from `scenius-digest.vercel.app/api/events?community=nsrt`
+- This API aggregates Luma links from the NSRT Telegram group's Events topic + the `lu.ma/nsrt` calendar
+- Events are filtered to future-only and sorted by date
+- Graceful fallback: shows link to lu.ma/nsrt if API fails, "no events" message with Telegram link if empty
+
+**Page sections:** Events (01), Tools (02), Ideas (03), Suggest (04), Manifesto, Footer.
+
+**Design system:** Navy/amber/cream palette with blueprint grid background. Fonts: Libre Baskerville (display), Source Serif 4 (body), JetBrains Mono (UI/mono). CSS variables defined in `:root`.
+
 ## Related Projects
 
 | Project | Description |
@@ -46,6 +60,7 @@ body.sr [data-lang="sr"] { display: block !important; }
 | [dear-neighbors](https://github.com/Citizen-Infra/dear-neighbors) | Chrome extension — neighborhood dashboard |
 | [my-community](https://github.com/Citizen-Infra/my-community) | Chrome extension — community dashboard with Bluesky |
 | [community-admin](https://github.com/Citizen-Infra) | Admin platform for organizers (WIP) |
+| [scenius-digest](../scenius-digest/) | Provides the events API — monitors NSRT Telegram group and Luma calendar |
 
 ## Design Principles
 
