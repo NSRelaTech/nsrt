@@ -761,6 +761,157 @@
         .slide--dark .idea-card p {
             color: rgba(255, 255, 255, 0.65);
         }
+
+        /* ============================================
+           COMPONENTS: Vote Cards (icebreaker polls)
+           ============================================ */
+        .vote-row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .vote-card {
+            background: white;
+            border: 2px solid var(--navy);
+            padding: 36px 44px;
+            text-align: center;
+            min-width: 200px;
+            flex: 1;
+            max-width: 260px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .vote-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 5px;
+            background: var(--steel);
+        }
+
+        .vote-card .vote-value {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .vote-card .vote-label {
+            font-family: var(--font-mono);
+            font-size: clamp(0.75rem, 0.95vw, 0.9rem);
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .slide-footnote {
+            font-family: var(--font-mono);
+            font-size: clamp(0.8rem, 1vw, 0.9rem);
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           COMPONENTS: Escalation List (building tension)
+           ============================================ */
+        .escalation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .escalation-list li {
+            padding: 12px 0;
+            font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .escalation-list li:last-child {
+            border-bottom: none;
+        }
+
+        .escalation-list li::before {
+            content: '—';
+            color: var(--steel);
+            font-family: var(--font-mono);
+            flex-shrink: 0;
+        }
+
+        .escalation-list .climax {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2vw, 1.7rem);
+            font-weight: 700;
+            color: var(--navy);
+            border-bottom: none;
+            padding-top: 20px;
+        }
+
+        .escalation-list .climax::before {
+            content: '>';
+            color: var(--amber);
+        }
+
+        /* ============================================
+           COMPONENTS: Tool Cards (what we built)
+           ============================================ */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border: 2px solid var(--navy);
+            padding: 24px 28px;
+            position: relative;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 4px;
+            background: var(--amber);
+        }
+
+        .tool-card h4 {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .tool-card p {
+            font-size: clamp(0.9rem, 1.05vw, 1rem);
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .tool-card .tool-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--steel);
+            background: var(--cream-dark);
+            padding: 3px 10px;
+            border-radius: 3px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -770,7 +921,7 @@
 
     <!-- Slide counter -->
     <div class="slide-counter" id="counter">
-        <span class="current">01</span><span class="separator">/</span><span class="total">03</span>
+        <span class="current">01</span><span class="separator">/</span><span class="total">09</span>
     </div>
 
     <!-- Navigation hints (shown briefly on first slide) -->
@@ -797,39 +948,198 @@
         <div class="slide slide--section" data-slide="1">
             <div class="section-number stagger-1">01</div>
             <div class="section-badge stagger-2">ACT 01</div>
-            <h2 class="stagger-3">Зачем?</h2>
-            <div class="section-subtitle stagger-4">Почему мы здесь и что нас объединяет</div>
+            <h2 class="stagger-3">Зачем мы здесь</h2>
+            <div class="section-subtitle stagger-4">Проблема, которую мы решаем</div>
         </div>
 
-        <!-- SLIDE 3: Placeholder content slide -->
+        <!-- SLIDE 3: Icebreaker -->
         <div class="slide slide--content" data-slide="2">
             <div class="slide-header">
-                <span class="section-ref stagger-1">01</span>
-                <h2 class="stagger-2">Что такое NSRT</h2>
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Как давно вы живёте в Нови-Саде?</h2>
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="body-text stagger-3" style="margin-bottom: 32px;">
-                    Сообщество жителей Нови-Сада, которые создают технологии для соседства. Маленькие инструменты, чтобы лучше знать друг друга, помогать и доверять.
-                </div>
-                <div class="stats-row stagger-4">
-                    <div class="stat-card">
-                        <div class="stat-value">111</div>
-                        <div class="stat-label">стран</div>
+                <div class="vote-row stagger-3">
+                    <div class="vote-card">
+                        <div class="vote-value">&lt; 1</div>
+                        <div class="vote-label">года</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">340+</div>
-                        <div class="stat-label">городов</div>
+                    <div class="vote-card">
+                        <div class="vote-value">1&ndash;3</div>
+                        <div class="vote-label">года</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">1</div>
-                        <div class="stat-label">сообщество</div>
+                    <div class="vote-card">
+                        <div class="vote-value">3+</div>
+                        <div class="vote-label">лет</div>
                     </div>
                 </div>
-                <div class="highlight-box stagger-5" style="margin-top: 32px;">
-                    <div class="highlight-label">Принцип</div>
-                    <p>Никто не придёт спасать наши дворы. Но мы можем сделать всё сами.</p>
+                <div class="slide-footnote stagger-4">Поднимите руку</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: The problem -->
+        <div class="slide slide--content" data-slide="3">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">У нас есть Telegram-чаты</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <ul class="escalation-list stagger-3">
+                    <li>Но знаем ли мы своих соседей?</li>
+                    <li>Кому позвонить, если нужна помощь в воскресенье?</li>
+                    <li>Кто живёт этажом выше?</li>
+                </ul>
+                <div class="highlight-box stagger-4" style="margin-top: 28px;">
+                    <p style="font-family: var(--font-display); font-size: clamp(1.3rem, 1.8vw, 1.6rem); color: var(--navy); font-weight: 700;">Изоляция &mdash; это состояние по умолчанию.</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Nobody's coming -->
+        <div class="slide slide--content slide--dark" data-slide="4">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Никто не придёт</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <ul class="escalation-list stagger-3" style="border-color: rgba(255,255,255,0.08);">
+                    <li style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.08);">Ни идеальное приложение</li>
+                    <li style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.08);">Ни городская администрация</li>
+                    <li style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.08);">Ни стартап из Белграда</li>
+                </ul>
+                <div class="highlight-box stagger-4" style="margin-top: 28px;">
+                    <p style="font-family: var(--font-display); font-size: clamp(1.2rem, 1.6vw, 1.45rem); color: var(--amber); font-weight: 700; line-height: 1.5;">Инструменты, которые нам нужны, создадим мы сами &mdash; те, кто здесь живёт.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Relational Technology -->
+        <div class="slide slide--content" data-slide="5">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Что такое &laquo;реляционные технологии&raquo;?</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="body-text stagger-3" style="margin-bottom: 28px;">
+                    Технологии, которые укрепляют связи между людьми.
+                </div>
+                <div class="highlight-box stagger-4" style="margin-bottom: 28px;">
+                    <div class="highlight-label">Контраст</div>
+                    <p>Не платформы, которые извлекают из нас данные и внимание.</p>
+                </div>
+                <div class="body-text stagger-5" style="font-size: clamp(0.95rem, 1.2vw, 1.1rem); color: var(--text-light);">
+                    Вдохновлено <strong style="color: var(--navy);">Relational Tech Project</strong> (relationaltechproject.org)
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Principles (dark) -->
+        <div class="slide slide--content slide--dark" data-slide="6">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Наши принципы</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="stagger-3">
+                    <div class="principle-item">
+                        <span class="arrow">&rarr;</span>
+                        <span><strong>От соседа к соседу.</strong> Укрепляем связи между людьми &mdash; не строим системы жалоб.</span>
+                    </div>
+                    <div class="principle-item">
+                        <span class="arrow">&rarr;</span>
+                        <span><strong>Масштаб деревни.</strong> Начинаем с подъезда, двора, квартала.</span>
+                    </div>
+                    <div class="principle-item">
+                        <span class="arrow">&rarr;</span>
+                        <span><strong>Много маленьких, не одна большая.</strong> Совместимые инструменты вместо монопольной платформы.</span>
+                    </div>
+                    <div class="principle-item">
+                        <span class="arrow">&rarr;</span>
+                        <span><strong>Ремикс, не изобретение.</strong> Берём работающие идеи и адаптируем под себя.</span>
+                    </div>
+                    <div class="principle-item">
+                        <span class="arrow">&rarr;</span>
+                        <span><strong>Суверенитет.</strong> Сообщество контролирует свои инструменты и данные.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: What already exists -->
+        <div class="slide slide--content" data-slide="7">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Что мы уже сделали</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="tool-grid stagger-3">
+                    <div class="tool-card">
+                        <h4>Dear Neighbors</h4>
+                        <p>Новая вкладка = лента вашего района</p>
+                        <div class="stats-row" style="margin-top: 12px; gap: 16px;">
+                            <div class="stat-card" style="padding: 14px 18px; min-width: auto; border-width: 1px;">
+                                <div class="stat-value" style="font-size: clamp(1.3rem, 2vw, 1.8rem);">111</div>
+                                <div class="stat-label">стран</div>
+                            </div>
+                            <div class="stat-card" style="padding: 14px 18px; min-width: auto; border-width: 1px;">
+                                <div class="stat-value" style="font-size: clamp(1.3rem, 2vw, 1.8rem);">340+</div>
+                                <div class="stat-label">городов</div>
+                            </div>
+                        </div>
+                        <span class="tool-tag">Chrome Extension</span>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Community Admin</h4>
+                        <p>Платформа для организаторов сообществ</p>
+                        <span class="tool-tag">в разработке</span>
+                    </div>
+                    <div class="tool-card">
+                        <h4>Events API</h4>
+                        <p>Автоматический сбор событий из Telegram + Luma</p>
+                        <span class="tool-tag">API</span>
+                    </div>
+                    <div class="tool-card">
+                        <h4>nsrt.netlify.app</h4>
+                        <p>Этот сайт &mdash; точка входа для сообщества</p>
+                        <span class="tool-tag">Landing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Ideas overview -->
+        <div class="slide slide--content" data-slide="8">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">01 &mdash; ЗАЧЕМ</span>
+                <h2 class="stagger-2">Идеи &mdash; с чего начать</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="idea-grid stagger-3">
+                    <div class="idea-card">
+                        <h4>Знакомство и связи</h4>
+                        <p>Истории соседей, Хаб подъезда, Посиделки во дворе</p>
+                    </div>
+                    <div class="idea-card">
+                        <h4>Взаимопомощь</h4>
+                        <p>Одолжи, Обмен умениями, Сеть помощи</p>
+                    </div>
+                    <div class="idea-card">
+                        <h4>Культура и бизнес</h4>
+                        <p>Культурный радар, Сначала свои</p>
+                    </div>
+                    <div class="idea-card">
+                        <h4>Инфраструктура</h4>
+                        <p>API соседства, Каталог инструментов</p>
+                    </div>
+                </div>
+                <div class="slide-footnote stagger-4" style="margin-top: 24px;">Это отправные точки, не дорожная карта. Ваши идеи &mdash; главное.</div>
             </div>
         </div>
 
