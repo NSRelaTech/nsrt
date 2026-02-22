@@ -176,6 +176,8 @@
         .slide.active .stagger-3 { animation: slideUp 0.6s 0.3s both cubic-bezier(0.22, 1, 0.36, 1); }
         .slide.active .stagger-4 { animation: slideUp 0.6s 0.4s both cubic-bezier(0.22, 1, 0.36, 1); }
         .slide.active .stagger-5 { animation: slideUp 0.6s 0.5s both cubic-bezier(0.22, 1, 0.36, 1); }
+        .slide.active .stagger-6 { animation: slideUp 0.6s 0.6s both cubic-bezier(0.22, 1, 0.36, 1); }
+        .slide.active .stagger-7 { animation: slideUp 0.6s 0.7s both cubic-bezier(0.22, 1, 0.36, 1); }
 
         @keyframes slideUp {
             from {
@@ -391,12 +393,12 @@
         .slide--content .slide-header-line {
             height: 2px;
             background: var(--navy);
-            margin: 20px 60px 0;
+            margin: 16px 60px 0;
         }
 
         .slide--content .slide-body {
             flex: 1;
-            padding: 40px 60px 60px;
+            padding: 36px 60px 48px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -606,12 +608,12 @@
 
         .highlight-box .highlight-label {
             font-family: var(--font-mono);
-            font-size: clamp(0.85rem, 1vw, 0.95rem);
-            font-weight: 500;
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
+            font-weight: 600;
             color: var(--amber-dark);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
 
         /* ============================================
@@ -631,14 +633,14 @@
 
         .idea-card h4 {
             font-family: var(--font-display);
-            font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+            font-size: clamp(1.15rem, 1.4vw, 1.3rem);
             color: var(--navy);
             margin-bottom: 12px;
         }
 
         .idea-card p {
-            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
-            color: var(--text-light);
+            font-size: clamp(1.1rem, 1.3vw, 1.2rem);
+            color: var(--text);
             line-height: 1.6;
         }
 
@@ -646,12 +648,12 @@
            COMPONENTS: Principle Items
            ============================================ */
         .principle-item {
-            padding: 18px 0;
+            padding: 16px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             gap: 18px;
             align-items: baseline;
-            font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+            font-size: clamp(1.2rem, 1.5vw, 1.35rem);
             line-height: 1.6;
         }
 
@@ -725,8 +727,12 @@
         }
 
         .slide--dark .highlight-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
             box-shadow: none;
+            border-color: var(--amber);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .slide--dark .highlight-box .highlight-label {
@@ -768,7 +774,8 @@
         }
 
         .slide--dark .idea-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--steel-light);
         }
 
         .slide--dark .idea-card h4 {
@@ -867,11 +874,11 @@
 
         .escalation-list .climax {
             font-family: var(--font-display);
-            font-size: clamp(1.4rem, 2vw, 1.7rem);
+            font-size: clamp(1.5rem, 2.2vw, 1.8rem);
             font-weight: 700;
             color: var(--navy);
             border-bottom: none;
-            padding-top: 20px;
+            padding-top: 24px;
         }
 
         .escalation-list .climax::before {
@@ -913,20 +920,20 @@
         }
 
         .tool-card p {
-            font-size: clamp(1rem, 1.15vw, 1.1rem);
-            color: var(--text-light);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+            color: var(--text);
             line-height: 1.5;
         }
 
         .tool-card .tool-tag {
             display: inline-block;
             font-family: var(--font-mono);
-            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
             color: var(--steel);
             background: var(--cream-dark);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 3px;
-            margin-top: 8px;
+            margin-top: 10px;
             letter-spacing: 0.5px;
         }
 
@@ -946,32 +953,32 @@
            COMPONENTS: QR Placeholder
            ============================================ */
         .qr-placeholder {
-            width: 320px;
-            height: 320px;
+            width: 360px;
+            height: 360px;
             border: 4px dashed var(--navy);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-mono);
-            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+            font-size: clamp(1.4rem, 2vw, 1.8rem);
             font-weight: 600;
             color: var(--navy);
             letter-spacing: 2px;
             background: white;
             margin: 0 auto;
-            box-shadow: 0 4px 24px rgba(26, 35, 50, 0.08);
+            box-shadow: 0 6px 32px rgba(26, 35, 50, 0.1);
         }
 
         .qr-url {
             font-family: var(--font-mono);
-            font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
             color: var(--navy);
             background: var(--cream-dark);
-            padding: 12px 28px;
+            padding: 14px 32px;
             border-radius: 4px;
             display: inline-block;
             letter-spacing: 0.5px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* ============================================
@@ -986,16 +993,16 @@
            COMPONENTS: Volunteer Callout
            ============================================ */
         .volunteer-callout {
-            margin-top: 24px;
-            padding: 24px 32px;
+            margin-top: 28px;
+            padding: 28px 36px;
             border: 3px solid var(--amber);
-            background: rgba(232, 168, 56, 0.06);
+            background: rgba(232, 168, 56, 0.08);
             text-align: center;
         }
 
         .volunteer-callout p {
             font-family: var(--font-display);
-            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+            font-size: clamp(1.4rem, 1.9vw, 1.7rem);
             font-weight: 700;
             color: var(--navy);
             line-height: 1.5;
@@ -1005,12 +1012,12 @@
            COMPONENTS: CTA Items (dark slides)
            ============================================ */
         .cta-item {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            gap: 18px;
+            gap: 20px;
             align-items: baseline;
-            font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+            font-size: clamp(1.25rem, 1.6vw, 1.45rem);
             line-height: 1.6;
         }
 
@@ -1020,7 +1027,8 @@
 
         .cta-item .cta-label {
             font-family: var(--font-mono);
-            font-size: clamp(1rem, 1.3vw, 1.2rem);
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+            font-weight: 500;
             color: var(--amber);
             white-space: nowrap;
             flex-shrink: 0;
@@ -1097,7 +1105,7 @@
 
         .platform-card .platform-label {
             font-family: var(--font-mono);
-            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
             font-weight: 600;
             color: var(--steel);
             text-transform: uppercase;
@@ -1121,7 +1129,7 @@
 
         .platform-card .platform-note {
             font-family: var(--font-body);
-            font-size: clamp(0.9rem, 1.1vw, 1rem);
+            font-size: clamp(0.95rem, 1.15vw, 1.05rem);
             color: var(--text-light);
             line-height: 1.5;
             margin-top: 8px;
@@ -1152,11 +1160,11 @@
         }
 
         .setup-steps li {
-            padding: 10px 0;
+            padding: 12px 0;
             display: flex;
             gap: 14px;
             align-items: baseline;
-            font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+            font-size: clamp(1.2rem, 1.5vw, 1.35rem);
             color: var(--text);
             line-height: 1.6;
             counter-increment: setup-step;
@@ -1208,13 +1216,13 @@
 
         .mcp-item .mcp-desc {
             font-family: var(--font-body);
-            font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+            font-size: clamp(1.05rem, 1.2vw, 1.15rem);
             color: var(--text-light);
         }
 
         .mcp-item .command-block {
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-            padding: 14px 18px;
+            font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+            padding: 16px 20px;
             margin-top: 10px;
         }
     </style>
@@ -1265,8 +1273,8 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="body-text stagger-3" style="font-family: var(--font-display); font-size: clamp(1.4rem, 2vw, 1.8rem); color: var(--navy); margin-bottom: 24px;">Артём</div>
-                <ul class="content-list stagger-3">
+                <div class="stagger-3" style="font-family: var(--font-display); font-size: clamp(2rem, 3vw, 2.6rem); color: var(--navy); margin-bottom: 28px; font-weight: 700; letter-spacing: 0.5px;">Артём</div>
+                <ul class="content-list stagger-4">
                     <li>Москва (33 года) &rarr; Англия (3 года) &rarr; Грузия (1 год) &rarr; <strong>Нови-Сад с 2024</strong></li>
                     <li>Резидент <strong>Newspeak House</strong>, Лондон (2022&ndash;2023) &mdash; там начал работать над <strong>Harmonica</strong></li>
                     <li>До этого &mdash; международное онлайн-сообщество <strong>Protein.xyz</strong></li>
@@ -1325,11 +1333,11 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="highlight-box stagger-3" style="margin-bottom: 20px;">
+                <div class="highlight-box stagger-3" style="margin-bottom: 24px;">
                     <div class="highlight-label">Цель</div>
                     <p style="font-size: clamp(1.2rem, 1.5vw, 1.4rem);">Инструменты для соседства &mdash; чтобы знать, помогать и доверять друг другу.</p>
                 </div>
-                <div class="highlight-box stagger-4" style="margin-bottom: 20px;">
+                <div class="highlight-box stagger-4" style="margin-bottom: 24px;">
                     <div class="highlight-label">Почему мы</div>
                     <p style="font-size: clamp(1.2rem, 1.5vw, 1.4rem);">Мы здесь живём. Мы знаем, чего не хватает. Теперь у нас есть способ это построить.</p>
                 </div>
@@ -1369,27 +1377,25 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="stagger-3">
-                    <div class="principle-item">
-                        <span class="arrow">&rarr;</span>
-                        <span><strong>От соседа к соседу.</strong> Укрепляем связи между людьми &mdash; не строим системы жалоб.</span>
-                    </div>
-                    <div class="principle-item">
-                        <span class="arrow">&rarr;</span>
-                        <span><strong>Масштаб деревни.</strong> Начинаем с подъезда, двора, квартала.</span>
-                    </div>
-                    <div class="principle-item">
-                        <span class="arrow">&rarr;</span>
-                        <span><strong>Много маленьких, не одна большая.</strong> Совместимые инструменты вместо монопольной платформы.</span>
-                    </div>
-                    <div class="principle-item">
-                        <span class="arrow">&rarr;</span>
-                        <span><strong>Ремикс, не изобретение.</strong> Берём работающие идеи и адаптируем под себя.</span>
-                    </div>
-                    <div class="principle-item">
-                        <span class="arrow">&rarr;</span>
-                        <span><strong>Суверенитет.</strong> Сообщество контролирует свои инструменты и данные.</span>
-                    </div>
+                <div class="principle-item stagger-3">
+                    <span class="arrow">&rarr;</span>
+                    <span><strong>От соседа к соседу.</strong> Укрепляем связи между людьми &mdash; не строим системы жалоб.</span>
+                </div>
+                <div class="principle-item stagger-3">
+                    <span class="arrow">&rarr;</span>
+                    <span><strong>Масштаб деревни.</strong> Начинаем с подъезда, двора, квартала.</span>
+                </div>
+                <div class="principle-item stagger-4">
+                    <span class="arrow">&rarr;</span>
+                    <span><strong>Много маленьких, не одна большая.</strong> Совместимые инструменты вместо монопольной платформы.</span>
+                </div>
+                <div class="principle-item stagger-4">
+                    <span class="arrow">&rarr;</span>
+                    <span><strong>Ремикс, не изобретение.</strong> Берём работающие идеи и адаптируем под себя.</span>
+                </div>
+                <div class="principle-item stagger-5">
+                    <span class="arrow">&rarr;</span>
+                    <span><strong>Суверенитет.</strong> Сообщество контролирует свои инструменты и данные.</span>
                 </div>
             </div>
         </div>
@@ -1486,13 +1492,13 @@
                 <div class="body-text stagger-3" style="margin-bottom: 12px;">
                     Хватит обо мне. Теперь ваш черёд.
                 </div>
-                <div class="body-text stagger-3" style="margin-bottom: 24px;">
+                <div class="body-text stagger-4" style="margin-bottom: 24px;">
                     Я сделал инструмент именно для таких разговоров &mdash; Harmonica.
                 </div>
-                <div class="highlight-box stagger-4" style="margin-bottom: 24px;">
+                <div class="highlight-box stagger-5" style="margin-bottom: 24px;">
                     <p>Каждый отвечает на вопрос со своего телефона. ИИ собирает все ответы в общий синтез. Вы увидите, что думает группа &mdash; не только самые громкие.</p>
                 </div>
-                <div class="body-text stagger-5">
+                <div class="body-text stagger-6">
                     Это займёт 15&ndash;20 минут.
                 </div>
             </div>
@@ -1547,19 +1553,19 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="body-text stagger-3" style="margin-bottom: 20px;">
+                <div class="body-text stagger-3" style="margin-bottom: 16px;">
                     Вы описываете, что хотите &mdash; обычным языком. ИИ пишет код.
                 </div>
-                <ul class="content-list stagger-3">
+                <ul class="content-list stagger-4">
                     <li>Никакого программирования. Только описание задачи.</li>
                     <li>ИИ понимает контекст и создаёт рабочий прототип.</li>
                     <li>Итерации: &laquo;это не то, измени вот так&raquo; &mdash; и он меняет.</li>
                 </ul>
-                <div class="highlight-box stagger-4">
+                <div class="highlight-box stagger-5">
                     <div class="highlight-label">Инструмент</div>
                     <p>Claude Code от Anthropic. $20/мес.</p>
                 </div>
-                <div class="volunteer-callout stagger-5">
+                <div class="volunteer-callout stagger-6">
                     <p>Мне нужен доброволец с ноутбуком!</p>
                 </div>
             </div>
@@ -1598,7 +1604,7 @@
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
                 <div class="body-text stagger-3" style="margin-bottom: 16px; font-weight: 600; color: var(--navy);">Установить Git:</div>
-                <div class="platform-split stagger-3">
+                <div class="platform-split stagger-4">
                     <div class="platform-card">
                         <div class="platform-label"><i class="platform-icon">&#63743;</i> macOS</div>
                         <div class="command-block">xcode-select --install</div>
@@ -1609,7 +1615,7 @@
                         <div class="platform-note">Next &rarr; Next &rarr; Install</div>
                     </div>
                 </div>
-                <div class="highlight-box stagger-4" style="margin-top: 24px;">
+                <div class="highlight-box stagger-5" style="margin-top: 24px;">
                     <div class="highlight-label">GitHub</div>
                     <p>Зайдите на <strong>github.com</strong> и создайте аккаунт. GitHub &mdash; это где хранится код. Бесплатно.</p>
                 </div>
@@ -1659,13 +1665,13 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="setup-note stagger-3" style="margin-bottom: 20px; font-size: clamp(1.1rem, 1.4vw, 1.25rem); color: var(--text);">Откройте терминал (Terminal на Mac, PowerShell на Windows)</div>
-                <div class="command-block stagger-3" style="font-size: clamp(1.8rem, 3vw, 2.5rem); text-align: center; display: block; margin: 0 auto 24px; max-width: 300px;">claude</div>
-                <ol class="setup-steps stagger-4">
+                <div class="setup-note stagger-3" style="margin-bottom: 20px; font-size: clamp(1.15rem, 1.4vw, 1.25rem); color: var(--text);">Откройте терминал (Terminal на Mac, PowerShell на Windows)</div>
+                <div class="command-block stagger-4" style="font-size: clamp(1.8rem, 3vw, 2.5rem); text-align: center; display: block; margin: 0 auto 24px; max-width: 300px;">claude</div>
+                <ol class="setup-steps stagger-5">
                     <li>Браузер откроется для авторизации. Нажмите &laquo;Разрешить&raquo;.</li>
                     <li>Готово! Вы внутри Claude Code.</li>
                 </ol>
-                <div class="highlight-box stagger-5" style="margin-top: 20px;">
+                <div class="highlight-box stagger-6" style="margin-top: 20px;">
                     <div class="highlight-label">Совет</div>
                     <p>Создайте папку для проекта и запустите claude оттуда:</p>
                     <div class="command-block command-block--small" style="margin-top: 10px;">mkdir my-project && cd my-project && claude</div>
@@ -1681,22 +1687,22 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="setup-note stagger-3" style="margin-bottom: 20px; font-size: clamp(1.1rem, 1.4vw, 1.25rem); color: var(--text);">MCP-серверы дают Claude Code доступ к внешним инструментам.</div>
-                <div class="mcp-item stagger-3">
+                <div class="setup-note stagger-3" style="margin-bottom: 20px; font-size: clamp(1.15rem, 1.4vw, 1.25rem); color: var(--text);">MCP-серверы дают Claude Code доступ к внешним инструментам.</div>
+                <div class="mcp-item stagger-4">
                     <div class="mcp-header">
                         <span class="mcp-name">Firecrawl</span>
                         <span class="mcp-desc">&mdash; Поиск и чтение веб-страниц</span>
                     </div>
                     <div class="command-block">claude mcp add firecrawl -- npx -y firecrawl-mcp</div>
                 </div>
-                <div class="mcp-item stagger-4">
+                <div class="mcp-item stagger-5">
                     <div class="mcp-header">
                         <span class="mcp-name">Context7</span>
                         <span class="mcp-desc">&mdash; Документация библиотек &mdash; всегда актуальная</span>
                     </div>
                     <div class="command-block">claude mcp add context7 -- npx -y @upstash/context7-mcp@latest</div>
                 </div>
-                <div class="slide-footnote stagger-5" style="margin-top: 20px;">Есть сотни MCP-серверов для всего: базы данных, деплой, Telegram, Notion...</div>
+                <div class="slide-footnote stagger-6" style="margin-top: 20px;">Есть сотни MCP-серверов для всего: базы данных, деплой, Telegram, Notion...</div>
             </div>
         </div>
 
@@ -1715,21 +1721,19 @@
             </div>
             <div class="slide-header-line stagger-2"></div>
             <div class="slide-body">
-                <div class="stagger-3">
-                    <div class="cta-item">
-                        <span class="cta-label">Telegram: t.me/NSRelaTech</span>
-                        <span class="cta-text">присоединяйтесь к группе</span>
-                    </div>
-                    <div class="cta-item">
-                        <span class="cta-label">Сайт: nsrt.netlify.app</span>
-                        <span class="cta-text">идеи, инструменты, манифест</span>
-                    </div>
-                    <div class="cta-item">
-                        <span class="cta-label">Хотите попробовать вайбкодинг?</span>
-                        <span class="cta-text">Я помогу начать.</span>
-                    </div>
+                <div class="cta-item stagger-3">
+                    <span class="cta-label">Telegram: t.me/NSRelaTech</span>
+                    <span class="cta-text">присоединяйтесь к группе</span>
                 </div>
-                <div class="slide-footnote stagger-4" style="margin-top: 40px;">Результаты сегодняшнего обсуждения в Harmonica &mdash; ссылка в чате</div>
+                <div class="cta-item stagger-4">
+                    <span class="cta-label">Сайт: nsrt.netlify.app</span>
+                    <span class="cta-text">идеи, инструменты, манифест</span>
+                </div>
+                <div class="cta-item stagger-5">
+                    <span class="cta-label">Хотите попробовать вайбкодинг?</span>
+                    <span class="cta-text">Я помогу начать.</span>
+                </div>
+                <div class="slide-footnote stagger-6" style="margin-top: 40px;">Результаты сегодняшнего обсуждения в Harmonica &mdash; ссылка в чате</div>
             </div>
         </div>
 
