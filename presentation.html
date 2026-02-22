@@ -954,6 +954,66 @@
             display: inline-block;
             letter-spacing: 0.5px;
         }
+
+        /* ============================================
+           COMPONENTS: Break Decoration
+           ============================================ */
+        .break-decoration {
+            margin: 32px 0;
+        }
+
+        /* ============================================
+           COMPONENTS: Volunteer Callout
+           ============================================ */
+        .volunteer-callout {
+            margin-top: 24px;
+            padding: 24px 32px;
+            border: 3px solid var(--amber);
+            background: rgba(232, 168, 56, 0.06);
+            text-align: center;
+        }
+
+        .volunteer-callout p {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           COMPONENTS: CTA Items (dark slides)
+           ============================================ */
+        .cta-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            gap: 18px;
+            align-items: baseline;
+            font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+            line-height: 1.6;
+        }
+
+        .cta-item:last-child {
+            border-bottom: none;
+        }
+
+        .cta-item .cta-label {
+            font-family: var(--font-mono);
+            font-size: clamp(0.85rem, 1.1vw, 1rem);
+            color: var(--amber);
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 200px;
+        }
+
+        .cta-item .cta-text {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .slide--dark .slide-footnote {
+            color: rgba(255, 255, 255, 0.45);
+        }
     </style>
 </head>
 <body>
@@ -1232,6 +1292,87 @@
                     <span class="qr-url">harmonica.chat/s/...</span>
                 </div>
                 <div class="slide-footnote stagger-5" style="margin-top: 28px;">Анонимно. Без регистрации.</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Break -->
+        <div class="slide slide--break" data-slide="12">
+            <h2 class="stagger-1">Перерыв</h2>
+            <div class="break-decoration stagger-2">
+                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" stroke="#4A6FA5" stroke-width="2">
+                    <path d="M0 30 Q30 10 60 30 Q90 10 120 30"/>
+                    <line x1="20" y1="30" x2="20" y2="38"/>
+                    <line x1="60" y1="30" x2="60" y2="38"/>
+                    <line x1="100" y1="30" x2="100" y2="38"/>
+                </svg>
+            </div>
+            <div class="break-subtitle stagger-3">10 минут</div>
+        </div>
+
+        <!-- SLIDE 14: Section divider — Act 3 -->
+        <div class="slide slide--section" data-slide="13">
+            <div class="section-number stagger-1">03</div>
+            <div class="section-badge stagger-2">ACT 03</div>
+            <h2 class="stagger-3">Как это работает</h2>
+            <div class="section-subtitle stagger-4">Живая демонстрация</div>
+        </div>
+
+        <!-- SLIDE 15: Vibecoding -->
+        <div class="slide slide--content" data-slide="14">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">03 &mdash; КАК</span>
+                <h2 class="stagger-2">Вайбкодинг</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="body-text stagger-3" style="margin-bottom: 20px;">
+                    Вы описываете, что хотите &mdash; обычным языком. ИИ пишет код.
+                </div>
+                <ul class="content-list stagger-3">
+                    <li>Никакого программирования. Только описание задачи.</li>
+                    <li>ИИ понимает контекст и создаёт рабочий прототип.</li>
+                    <li>Итерации: &laquo;это не то, измени вот так&raquo; &mdash; и он меняет.</li>
+                </ul>
+                <div class="highlight-box stagger-4">
+                    <div class="highlight-label">Инструмент</div>
+                    <p>Claude Code от Anthropic. $20/мес.</p>
+                </div>
+                <div class="volunteer-callout stagger-5">
+                    <p>Мне нужен доброволец с ноутбуком!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 16: Closing quote -->
+        <div class="slide slide--quote" data-slide="15">
+            <div class="quote-mark stagger-1">&ldquo;</div>
+            <blockquote class="stagger-2">Если вы хотите научить людей новому образу мышления, не пытайтесь их учить. Вместо этого дайте им инструмент, использование которого приведёт к новым способам мышления.</blockquote>
+            <div class="attribution stagger-3">&mdash; Бакминстер Фуллер</div>
+        </div>
+
+        <!-- SLIDE 17: Call to action -->
+        <div class="slide slide--content slide--dark" data-slide="16">
+            <div class="slide-header">
+                <span class="section-ref stagger-1">NSRT</span>
+                <h2 class="stagger-2">Что дальше?</h2>
+            </div>
+            <div class="slide-header-line stagger-2"></div>
+            <div class="slide-body">
+                <div class="stagger-3">
+                    <div class="cta-item">
+                        <span class="cta-label">Telegram: t.me/NSRelaTech</span>
+                        <span class="cta-text">присоединяйтесь к группе</span>
+                    </div>
+                    <div class="cta-item">
+                        <span class="cta-label">Сайт: nsrt.netlify.app</span>
+                        <span class="cta-text">идеи, инструменты, манифест</span>
+                    </div>
+                    <div class="cta-item">
+                        <span class="cta-label">Хотите попробовать вайбкодинг?</span>
+                        <span class="cta-text">Я помогу начать.</span>
+                    </div>
+                </div>
+                <div class="slide-footnote stagger-4" style="margin-top: 40px;">Результаты сегодняшнего обсуждения в Harmonica &mdash; ссылка в чате</div>
             </div>
         </div>
 
