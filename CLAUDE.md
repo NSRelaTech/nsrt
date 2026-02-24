@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Novi Sad Relational Tech (NSRT) — community tools crafted by, with, and for Novi Sad residents. Part of [Citizen Infrastructure Builders](https://github.com/Citizen-Infra).
+Novi Sad Relational Tech (NSRT) — community tools crafted by, with, and for Novi Sad residents. Part of [NSRelaTech](https://github.com/NSRelaTech), the Novi Sad chapter of [Citizen Infrastructure](https://github.com/Citizen-Infra).
 
 **Live site:** [nsrt.netlify.app](https://nsrt.netlify.app)
 **Telegram:** [t.me/NSRelaTech](https://t.me/NSRelaTech)
@@ -57,9 +57,9 @@ body.sr [data-lang="sr"] { display: block !important; }
 
 | Project | Description |
 |---------|-------------|
-| [dear-neighbors](https://github.com/Citizen-Infra/dear-neighbors) | Chrome extension — neighborhood dashboard |
+| [dear-neighbors](https://github.com/NSRelaTech/dear-neighbors) | Chrome extension — neighborhood dashboard (fork for NS collaboration) |
 | [my-community](https://github.com/Citizen-Infra/my-community) | Chrome extension — community dashboard with Bluesky |
-| [community-admin](https://github.com/Citizen-Infra) | Admin platform for organizers (WIP) |
+| [community-admin](https://github.com/Citizen-Infra/community-admin) | Admin platform for organizers (WIP) |
 | [scenius-digest](../scenius-digest/) | Provides the events API — monitors NSRT Telegram group and Luma calendar |
 
 ## Design Principles
